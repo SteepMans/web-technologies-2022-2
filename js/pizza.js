@@ -1,18 +1,20 @@
 export class Pizza {
-    constructor(name, calories, price, pizzaSize, toppings = []) {
+    constructor(name, calories, price, pizzaSize, toppings = [], image = "") {
         this.name = name;
+        this.startPrice = price;
         this.pizzaPrice = price;
         this.pizzaCalories = calories;
         this.toppings = [...toppings];
         this.pizzaSize = pizzaSize;
         this.toppingCalories = 0;
+        this.image = image;
         
         toppings.map((item) => {
             this.addTopping(item);
         })
 
         if (pizzaSize && toppings)
-            this.updateCalories();
+            this.calculate();
     }
 
     addTopping(topping) {
@@ -22,13 +24,13 @@ export class Pizza {
     }
 
     deleteTopping(topping) {
-        this.toppings = this.toppings.filter((element) => console.log(element === topping));
+        this.toppings = this.toppings.filter((element) => element !== topping);
         this.toppingCalories -= topping.getCalories(this.pizzaSize);
         this.pizzaPrice -= topping.getPrice(this.pizzaSize);
     }
 
     calculateCalories() {
-        return this.toppingCalories + this.pizzaCalories.calories + this.pizzaSize.calories;
+        return this.toppingCalories + this.pizzaCalories + this.pizzaSize.calories;
     }
 
     calculatePrice() {
@@ -49,26 +51,24 @@ export class Pizza {
 
     setSize(size) {
         this.pizzaSize = size
-        this.updateCalories();
+        this.calculate();
     }
 
     setType(pizza) {
         this.name = pizza.name;
-        this.pizzaSize = pizza.getSize();
         this.pizzaPrice = pizza.pizzaPrice;
-        this.toppingCalories = 0;
-        
-        this.updateCalories();
+        this.startPrice = pizza.startPrice;
+       
+        this.calculate();
     }
 
-    updateCalories() {
-        this.currentCalories = 0;
-        this.currentCalories = this.pizzaCalories;
+    calculate() {
+        this.toppingCalories = 0;
+        this.pizzaPrice = this.startPrice;
 
-        this.currentCalories += this.pizzaSize.calories;
-        
-        if (this.toppings.length > 0) {
-            this.toppings.reduce((prev, current) => this.currentCalories += current.calories);
+        for (var item of this.toppings) {
+            this.toppingCalories += item.getCalories(this.pizzaSize);
+            this.pizzaPrice += item.getPrice(this.pizzaSize);
         }
     }
 }

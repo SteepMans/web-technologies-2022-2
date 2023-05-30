@@ -9,13 +9,12 @@ export class PizzaConstructorMenu {
 		this.pizzaToppings = pizzaToppings
 		this.pizzaSizes = pizzaSizes
 
-		console.log(pizzaTypes)
 		this.constructedPizza = new Pizza(pizzaTypes[0].name, pizzaTypes[0].pizzaCalories, pizzaTypes[0].pizzaPrice, pizzaTypes[0].pizzaSize)
 
 		this.addToCartButton = document.getElementsByClassName('add_to_cart')[0]
 
 		this.setTotalPrice = (price, calories) => {
-			this.addToCartButton.textContent = `Добавить в корзину за ${price}(${calories} кКал)`
+			this.addToCartButton.textContent = `Добавить в корзину за ${price} (${calories} кКал)`
 		}
 
 		this.onSizeChange = (newPizzaSize) => {
@@ -36,12 +35,7 @@ export class PizzaConstructorMenu {
 
 		this.onPizzaToppingSelect = (newPizzaTopping) => {
 			if (this.constructedPizza.getToppings().includes(newPizzaTopping)) {
-				this.constructedPizza
-					.getToppings()
-					.splice(
-						this.constructedPizza.getToppings().indexOf(newPizzaTopping),
-						1
-					)
+				this.constructedPizza.deleteTopping(newPizzaTopping)
 			} else {
 				this.constructedPizza.addTopping(newPizzaTopping)
 			}

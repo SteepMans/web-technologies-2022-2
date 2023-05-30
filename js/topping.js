@@ -1,7 +1,8 @@
 export class Topping {
-    constructor(name, toppingInfo) {
+    constructor(name, toppingInfo, image) {
         this.name = name;
         this.toppingInfo = toppingInfo;
+        this.image = image;
     }
 
     getCalories(pizzaSize) {
