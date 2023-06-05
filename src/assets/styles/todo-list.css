@@ -1,0 +1,27 @@
+.todo-list-item__container  {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 4fr 1fr 1fr;
+    align-items: center;
+
+    border-color: black;
+    border-radius: 3px;
+    border: 2px solid;
+
+    padding: 5px;
+}
+
+.todo-list-item__container  button {
+    height: 5vh;
+}
+
+.todo-list-item__container  h6 {
+    display: flex;
+    justify-content: center;
+}
+
+#todo-list {
+    margin-top: 20px;
+    display: grid;
+    gap: 10px;
+}

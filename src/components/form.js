@@ -1,4 +1,4 @@
-class Form {
+export class Form {
     el = null
     rules = null
     callback = null

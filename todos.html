@@ -18,7 +18,16 @@
 </header>
 
 <main class="main">
+    <form id="todo-form" class="form">
+        <div class="todo-form__input">
+            <input type="text" class="text-field__input" name="description" placeholder="description" />
+            <span class="text-field__error"></span>
+        </div>
 
+        <button type="submit" class="button">Create</button>
+    </form>
+
+    <div id="todo-list"></div>
 </main>
 
 <div class="loader-wrapper" data-loading>
