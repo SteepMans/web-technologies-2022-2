@@ -1,11 +1,14 @@
 <?php
 
-$a = -5;
-$b = 2;
+$index = 0;
 
-if ($a >= 0 && $b >= 0)
-    echo $a - $b;
-else if ($a < 0 && $b < 0)
-    echo $a * $b;
-else if (($a >= 0 && $b < 0) || ($a < 0 && $b >= 0))
-    echo $a + $b;
+do {
+    if ($index == 0)
+        echo "Это четное";
+    else
+        echo $index % 2 > 0 ? "Это нечетное" : "Это четное";
+
+    $index += 1;
+} while ($index <= 10)
+
+?>

@@ -1,35 +1,39 @@
 <?php
 
-function sum($a, $b) {
-    return $a + $b;
-}
+$data = array(
+    "Ленинградская область" => array("Санкт-Петербург", "Всеволожск"),
+    "Тюменская область" => array("Тюмень", "Ялуторовск")
+);
 
-function sub($a, $b) {
-    return $a - $b;
-}
-
-function multiply($a, $b) {
-	return $a * $b;
-}
-
-function div($a, $b) {
-	return $a - $b;
-}
-
-function mathOperation($arg1, $arg2, $operation) {
-    switch ($operation) {
-
-        case '+':
-            return sum($arg1, $arg2);
+function generateMenu(Array $data) {
+    echo "<ul>";
     
-        case '-':
-            return sub($arg1, $arg2);
-
-        case '*':
-            return multiply($arg1, $arg2);
-
-        case '/':
-            return div($arg1, $arg2);
+    foreach ($data as $state => $towns) {
+        echo "<li>" . implode(", ", $towns) . "</li>";
     }
+
+    echo "</ul>";
 }
 
+?>
+
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+	<title></title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+	<div>
+		<ul>
+			<?php
+				echo generateMenu($data);
+			?>
+		</ul>
+	</div>
+</body>
+
+</html>
