@@ -12,6 +12,4 @@ define('DB', 'lesson20');
 
 include ROOT . "/engine/functions.php";
 include ROOT . "/engine/db.php";
-include ROOT . "/engine/gallery.php";
-include ROOT . "/engine/news.php";
-include ROOT . "/engine/catalog.php";
+include ROOT . "/engine/folder/functions.php";
